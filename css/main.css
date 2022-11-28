@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+.search_bar > input {
+    height: 40px;
+    /* width: 0px; */
+}
