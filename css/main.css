@@ -1,21 +1,104 @@
 *{
     margin: 0;
     padding: 0;
-    height: 100vh;
+    font-family: sans-serif;
 }
 body{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+header{
     display: flex;
     flex-direction: column;
 }
 .navbar{
     display: flex;
     justify-content: space-between;
+    padding: 15px;
 }
 img{
     width: 60px;
     height: 60px;
     border-radius: 30px;
 }
-.search_bar > input {
+.search_bar input {
+    margin-top: 8px;
     height: 40px;
+    padding: 20px;
+    width: 550px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+.icon_constumer{
+    margin-top: 5px;
+    display: flex;
+    gap: 20px;
+}
+.icon_personal i{
+    font-size: 30px;
+    color: white;
+}
+.icon_constumer i{
+    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+}
+.navbar_menu ul{
+    display: flex;
+    background-color: white;
+    display: flex;
+    gap: 50px;
+    padding: 15px;
+}
+.navbar_menu ul li {
+    list-style: none;
+}
+.navbar_menu ul li a{
+    text-decoration-line: none;
+    color: black;
+}
+.navbar_menu ul li a:hover{
+    background-color: aquamarine;
+    padding: 15px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+main .shoes{
+    padding: 10px;
+    gap: 50px;
+    display: flex;
+}
+main .card{
+    border-radius: 20px;
+    padding: 20px;
+    width: 200px;
+    background-color: #1F2833;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.card img {
+    width: 150px;
+    height: 200px;
+}
+.text_button{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.text_button button {
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: aquamarine;
+}
+.text_button p {
+    color: white;
+    padding: 5px;
 }
