@@ -58,28 +58,3 @@ renderDomData();
 
 
 // searcher product
-
-function searchBook(event) {
-    // 1- Get the search text
-    event.preventDefault();
-    let text = searchBookInput.value
-  
-    // 2- Loop on all LI
-    let productLabrary = document.querySelectorAll('li')
-    productLabrary.forEach(index => {
-      let isBook = index.firstElementChild.textContent
-      let isFound = true
-      for (let word in text){
-        if (text[word].toLocaleLowerCase() !== isBook[word].toLocaleLowerCase()){
-          isFound = false
-        }
-      }
-  
-      // Update the style of the LI (visible or hidden)
-      if (!isFound){
-        index.style.display = 'none'
-      }else{
-        index.style.display = 'block'
-      }
-    })
-}

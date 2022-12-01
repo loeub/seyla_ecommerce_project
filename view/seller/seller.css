@@ -53,6 +53,8 @@ form{
 }
 
 
+
+
 /* //----- add item -------/// */
 
 #cardContainer {
@@ -82,12 +84,12 @@ form{
     align-items: center;
     justify-content: space-between;
 }
+.images img{
+    width: 130px;
+    height: 130px;
+}
 span{
     color: white;
-}
-.cardInfo img{
-    width: 100px;
-    height: 80px;
 }
 .actions {
     width: 10%;

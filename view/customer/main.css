@@ -53,19 +53,20 @@ header{
 .navbar_menu ul{
     display: flex;
     background-color: white;
-    gap: 40px;
+    gap: 20px;
     padding: 15px;
 }
 .navbar_menu ul li {
     list-style: none;
 }
 .navbar_menu ul li a{
+    padding: 15px;
     text-decoration-line: none;
     color: black;
 }
 .navbar_menu ul li a:hover{
     background-color: aquamarine;
-    padding: 15px;
+    /* padding: 15px; */
     margin: 0;
 }
 main{
@@ -92,7 +93,7 @@ main{
 }
 .image img {
     width: 200px;
-    height: 170px;
+    height: 200px;
     margin-bottom: 10px;
 }
 .text_button{

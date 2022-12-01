@@ -5,6 +5,7 @@ const domBtnCreateItem = document.querySelector("#add");
 const addProduct = document.querySelector("#addProduct");
 const  dialog = document.querySelector("#dialog");
 let container = document.querySelector("#container");
+let getImage = document.querySelector("#file");
 let domData = []
 
 function saveData() {
@@ -47,7 +48,7 @@ function renderDataItem(){
         cardContainer.appendChild(card);
         
         let divImage = document.createElement("div");
-        divImage.setAttribute("class", "image");
+        divImage.setAttribute("class", "images");
         card.appendChild(divImage)
 
         let cardInfo = document.createElement("div");
@@ -108,14 +109,13 @@ function onAddItem() {
 
 function editData(event) {
     showDialog(dialog);
-    // TODO  Get the question index using the dataset
     // TODO   update the dialog with question informatin
-    document.querySelector("#url").value = domData[index].image;
+    document.querySelector("#file").value = data[index].image;
     document.querySelector("#price").value = domData[index].price;
     document.querySelector("#shoeSize").value = domData[index].size;
 
 
-    domData[index].image = document.querySelector("#url").value;
+    domData[index].image= document.querySelector("#file").value;
     domData[index].price = document.querySelector("#price").value;
     domData[index].size = document.querySelector("#shoeSize").value;
     // TODO   Show the dialog
@@ -124,17 +124,16 @@ function editData(event) {
 
 
 function updateData(event){
-    showDialog(dialog);
     document.querySelector("#add").textContent = "Update";
     let index = event.target.parentElement.parentElement.dataset.index;
-
-
-    document.querySelector("#url").value = domData[index].image;
+    showDialog(dialog);
+    
+    
+    document.querySelector("#file").value = getImage.value;
     document.querySelector("#price").value = domData[index].price;
     document.querySelector("#shoeSize").value = domData[index].size;
     domData.splice(index, 1);
 }
-
 
 
 function removeQuestion(event) {
@@ -155,14 +154,14 @@ function removeQuestion(event) {
 
 
 function createProduct(event) {
-    hideDialog(dialog);
     // 1- Create new question
     let newDataProduct = {};
-    newDataProduct.image = document.getElementById("url").value;
+    newDataProduct.image = imageURL;
     newDataProduct.brand = document.getElementById("shoesBrand").value;
     newDataProduct.price = document.getElementById("price").value;
     newDataProduct.size = document.getElementById("shoeSize").value;
     domData.push(newDataProduct);
+    hideDialog(dialog);
   
     // 2- Save question
     saveData();
@@ -180,3 +179,19 @@ domAddBtn.addEventListener("click", onAddItem);
 domCancelBtn.addEventListener("click", onCencal);
 domBtnCreateItem.addEventListener('click', createProduct)
 
+
+
+
+let imageURL = " ";
+
+function uploadImage(element) {
+    let file = element.files[0];
+    let reader = new FileReader();
+    reader.onloadend = function() {
+        imageURL = reader.result;
+    }
+    reader.readAsDataURL(file);
+}
+getImage.addEventListener('change', function(event) {
+    uploadImage(this);
+});
