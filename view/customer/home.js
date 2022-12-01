@@ -36,20 +36,18 @@ function renderDomData (){
         // create span
         let titleName = document.createElement("span");
         titleName.className = "title";
-        titleName.textContent = data.name;
+        titleName.textContent = data.brand;
         domDataInfo2.appendChild(titleName);
 
         //create the p
         let titlePrice = document.createElement("p");
-        titlePrice.textContent = data.price;
+        titlePrice.textContent = data.price + "$";
         domDataInfo2.appendChild(titlePrice);
-
-        //create the image
 
 
         //create the button
         let button = document.createElement('button');
-        button.textContent = "View";
+        button.textContent = "Buy Now";
         domDataInfo2.appendChild(button);
         
     }
@@ -57,3 +55,31 @@ function renderDomData (){
 }
 
 renderDomData();
+
+
+// searcher product
+
+function searchBook(event) {
+    // 1- Get the search text
+    event.preventDefault();
+    let text = searchBookInput.value
+  
+    // 2- Loop on all LI
+    let productLabrary = document.querySelectorAll('li')
+    productLabrary.forEach(index => {
+      let isBook = index.firstElementChild.textContent
+      let isFound = true
+      for (let word in text){
+        if (text[word].toLocaleLowerCase() !== isBook[word].toLocaleLowerCase()){
+          isFound = false
+        }
+      }
+  
+      // Update the style of the LI (visible or hidden)
+      if (!isFound){
+        index.style.display = 'none'
+      }else{
+        index.style.display = 'block'
+      }
+    })
+}

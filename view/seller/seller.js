@@ -5,30 +5,12 @@ const domBtnCreateItem = document.querySelector("#add");
 const addProduct = document.querySelector("#addProduct");
 const  dialog = document.querySelector("#dialog");
 let container = document.querySelector("#container");
-let domData = [
-    {
-        image:"", 
-        name:"Nike",
-        brand: "",
-        rating: 5
-    },
-    {
-        image:"", 
-        name:"Nike",
-        brand: "",
-        rating: 5
-    },
-    // {
-    //     image:"", 
-    //     name:"Nike",
-    //     brand: "",
-    //     rating: 5
-    // },
-]
+let domData = []
 
 function saveData() {
     localStorage.setItem("dataProruct", JSON.stringify(domData));
 }
+
 // get data from the local storage
 function getData() {
     let dataStorage = JSON.parse(localStorage.getItem("dataProruct"));
@@ -63,31 +45,41 @@ function renderDataItem(){
         card.setAttribute("class", "card")
         card.dataset.index = index;
         cardContainer.appendChild(card);
+        
+        let divImage = document.createElement("div");
+        divImage.setAttribute("class", "image");
+        card.appendChild(divImage)
 
-        let cardInfo = document.createElement("div")
+        let cardInfo = document.createElement("div");
         cardInfo.setAttribute("class", "cardInfo");
         card.appendChild(cardInfo);
 
-
         let image = document.createElement("img");
         image.src = data.image;
-        cardInfo.appendChild(image)
-
-        let productName = document.createElement("span");
-        productName.className = "title";
-        productName.textContent = data.name;
-        cardInfo.appendChild(productName);
+        divImage.appendChild(image)
 
 
-        let title = document.createElement("span");
-        title.className = "title";
-        title.textContent = data.brand;
-        cardInfo.appendChild(title);
+
+        let brand = document.createElement("span");
+        brand.className = "brand";
+        brand.textContent = data.brand;
+        cardInfo.appendChild(brand);
 
         let price = document.createElement("span");
         price.className = "title";
-        price.textContent = data.price;
+        price.textContent = data.price; 
         cardInfo.appendChild(price);
+
+
+        let size = document.createElement("span");
+        size.className = "title";
+        size.textContent = data.size;
+        cardInfo.appendChild(size);
+
+        let descriptionShoes = document.createElement("span");
+        descriptionShoes.className = "title";
+        descriptionShoes.textContent = data.description;
+        cardInfo.appendChild(descriptionShoes);
     
         let actions = document.createElement("div");
         actions.className = "actions";
@@ -114,21 +106,18 @@ function onAddItem() {
 }
 
 
-function editQuestion(event) {
+function editData(event) {
     showDialog(dialog);
     // TODO  Get the question index using the dataset
     // TODO   update the dialog with question informatin
     document.querySelector("#url").value = domData[index].image;
-    document.querySelector("#name").value = domData[index].name;
     document.querySelector("#price").value = domData[index].price;
     document.querySelector("#shoeSize").value = domData[index].size;
 
 
-    domData[index].image = document.querySelector("#url").value
-    domData[index].name = document.querySelector("#name").value
-    domData[index].price = document.querySelector("#price").value
-    domData[index].size = document.querySelector("#shoeSize").value
-        
+    domData[index].image = document.querySelector("#url").value;
+    domData[index].price = document.querySelector("#price").value;
+    domData[index].size = document.querySelector("#shoeSize").value;
     // TODO   Show the dialog
     domData.splice(index,1);
 }
@@ -140,8 +129,7 @@ function updateData(event){
     let index = event.target.parentElement.parentElement.dataset.index;
 
 
-    document.querySelector("#url").value = domData[index].image; 
-    document.querySelector("#name").value = domData[index].name;
+    document.querySelector("#url").value = domData[index].image;
     document.querySelector("#price").value = domData[index].price;
     document.querySelector("#shoeSize").value = domData[index].size;
     domData.splice(index, 1);
@@ -171,7 +159,7 @@ function createProduct(event) {
     // 1- Create new question
     let newDataProduct = {};
     newDataProduct.image = document.getElementById("url").value;
-    newDataProduct.name = document.getElementById("name").value;
+    newDataProduct.brand = document.getElementById("shoesBrand").value;
     newDataProduct.price = document.getElementById("price").value;
     newDataProduct.size = document.getElementById("shoeSize").value;
     domData.push(newDataProduct);

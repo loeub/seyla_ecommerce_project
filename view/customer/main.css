@@ -53,8 +53,7 @@ header{
 .navbar_menu ul{
     display: flex;
     background-color: white;
-    display: flex;
-    gap: 50px;
+    gap: 40px;
     padding: 15px;
 }
 .navbar_menu ul li {
@@ -67,6 +66,7 @@ header{
 .navbar_menu ul li a:hover{
     background-color: aquamarine;
     padding: 15px;
+    margin: 0;
 }
 main{
     display: flex;
@@ -75,9 +75,9 @@ main{
 }
 .container{
     padding: 10px;
-    gap: 50px;
+    gap: 10px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     /* display: flex; */
 }
 .container .card{
