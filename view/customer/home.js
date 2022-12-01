@@ -3,41 +3,8 @@ const domMianContainer = document.querySelector('main');
 
 
 
-// The data
-let domData = [
-    {
-        image:"",
-        productName:"Nike",
-        price:"$500",
-        rating:"Ho Theary Missed the Laundry !"
-    },
-    {
-        image:"",
-        productName:"Nike",
-        price:"$500",
-        rating:"Ho Theary Missed the Laundry !"
-    },
-    {
-        image:"",
-        productName:"Nike",
-        price:"$500",
-        rating:"Ho Theary Missed the Laundry !"
-    }
-]
-// function to store the local store
-function saveDomData() {
-    localStorage.setItem("dataProruct", JSON.stringify(domData));
-}
-
-
 // get data from the local storage
-function getDomData() {
-    let dataStorage = JSON.parse(localStorage.getItem("dataProruct"));
-    if (dataStorage !== null) {
-        domData = dataStorage;
-    }
-}
-
+let getData = JSON.parse(localStorage.getItem("dataProruct"));
 function renderDomData (){
     let domDataContainer = document.querySelector(".container");
     domDataContainer.remove();
@@ -46,10 +13,8 @@ function renderDomData (){
     domMianContainer.appendChild(domDataContainer);
 
 
-    for (let index = 0; index <domData.length; index++){
-        let data = domData[index];
-
-        
+    for (let index = 0; index <getData.length; index++){
+        let data = getData[index];
 
         let domDataInfo = document.createElement('div');
         domDataInfo.setAttribute('class', 'card')
@@ -71,7 +36,7 @@ function renderDomData (){
         // create span
         let titleName = document.createElement("span");
         titleName.className = "title";
-        titleName.textContent = data.productName;
+        titleName.textContent = data.name;
         domDataInfo2.appendChild(titleName);
 
         //create the p
@@ -80,9 +45,6 @@ function renderDomData (){
         domDataInfo2.appendChild(titlePrice);
 
         //create the image
-        let imageRating = document.createElement("img");
-        imageRating.src = data.rating;
-        domDataInfo2.appendChild(imageRating);
 
 
         //create the button

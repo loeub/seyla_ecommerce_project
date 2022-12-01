@@ -50,7 +50,6 @@ function hideDialog(element){
 
 
 function renderDataItem(){
-    console.log(domData);
     document.querySelector("#cardContainer").remove();
 
     let  cardContainer = document.createElement("div");
