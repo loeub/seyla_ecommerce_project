@@ -96,7 +96,7 @@ function renderDataItem(){
     
         let editAction = document.createElement("img");
         editAction.src = "../../image/edit.svg"
-        editAction.addEventListener("click", editData);
+        editAction.addEventListener("click", updateData);
         actions.appendChild(editAction);
     
         let trashAction = document.createElement("img");
@@ -111,22 +111,42 @@ function onCencal() {
 }
 function onAddItem() {
     showDialog(dialog)
+    document.querySelector("#add").textContent = "Add Product";
 }
 
 
-// function editData(event) {
-//     showDialog(dialog);
-//     // TODO  Get the question index using the dataset
-//     // TODO   update the dialog with question informatin
-//     document.querySelector("#url").value = domData[index].image;
-//     document.querySelector("#name").value = domData[index].name;
-//     document.querySelector("#price").value = domData[index].price;
-//     document.querySelector("#shoeSize").value = domData[index].size;
-    
-//     // TODO   Show the dialog
-//     domData.splice(index,1);
-// }
+function editQuestion(event) {
+    showDialog(dialog);
+    // TODO  Get the question index using the dataset
+    // TODO   update the dialog with question informatin
+    document.querySelector("#url").value = domData[index].image;
+    document.querySelector("#name").value = domData[index].name;
+    document.querySelector("#price").value = domData[index].price;
+    document.querySelector("#shoeSize").value = domData[index].size;
 
+
+    domData[index].image = document.querySelector("#url").value
+    domData[index].name = document.querySelector("#name").value
+    domData[index].price = document.querySelector("#price").value
+    domData[index].size = document.querySelector("#shoeSize").value
+        
+    // TODO   Show the dialog
+    domData.splice(index,1);
+}
+
+
+function updateData(event){
+    showDialog(dialog);
+    document.querySelector("#add").textContent = "Update";
+    let index = event.target.parentElement.parentElement.dataset.index;
+
+
+    document.querySelector("#url").value = domData[index].image; 
+    document.querySelector("#name").value = domData[index].name;
+    document.querySelector("#price").value = domData[index].price;
+    document.querySelector("#shoeSize").value = domData[index].size;
+    domData.splice(index, 1);
+}
 
 
 
@@ -144,31 +164,18 @@ function removeQuestion(event) {
     renderDataItem();
 }
 
-let editProduct = null;
+
 
 
 function createProduct(event) {
     hideDialog(dialog);
     // 1- Create new question
-    document.getElementById("add").textContent = "EDIT";
-    if (editProduct !== null) {
-        let productToEdit = domData[editProduct];
-        console.log(productToEdit)
-        document.getElementById("url").value;
-        document.getElementById("name").value;
-        document.getElementById("price").value;
-        document.getElementById("shoeSize").value;
-        
-    }else{
-
-        let newDataProduct = {};
-        document.getElementById("url").value;
-        document.getElementById("name").value;
-        document.getElementById("price").value;
-        document.getElementById("shoeSize").value;
-        domData.push(newDataProduct);
-    }
-
+    let newDataProduct = {};
+    newDataProduct.image = document.getElementById("url").value;
+    newDataProduct.name = document.getElementById("name").value;
+    newDataProduct.price = document.getElementById("price").value;
+    newDataProduct.size = document.getElementById("shoeSize").value;
+    domData.push(newDataProduct);
   
     // 2- Save question
     saveData();
@@ -177,24 +184,12 @@ function createProduct(event) {
     renderDataItem();
 }
 
-// // saveData();
+// saveData();
 getData();
 renderDataItem();
 
-function editData(event) {
-    showDialog(dialog);
 
-    productToEdit = event.target.parentElement.parentElement.dataset.index;
-    console.log(productToEdit)
-    
-    // update the dialog with question informatin
-    let product = products[productToEdit];
-
-    document.querySelector("#url").value = domData[index].image;
-    document.querySelector("#name").value = domData[index].name;
-    document.querySelector("#price").value = domData[index].price;
-    document.querySelector("#brand").value = domData[index].brand;
-    domData.splice(index, 1);
-    document.querySelector("#add").textContent = "Edit";
-}; 
+domAddBtn.addEventListener("click", onAddItem);
+domCancelBtn.addEventListener("click", onCencal);
+domBtnCreateItem.addEventListener('click', createProduct)
 
