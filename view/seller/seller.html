@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELLER</title>
+    <script defer src="seller.js "></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="seller.css">
+    <link rel="stylesheet" href="../../view/customer/main.css">
+
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo_picture">
+                <a href="../../index.html">
+                    <img src="../../image/light.jpg" alt="">
+                </a>
+            </div>
+            <div class="icon_constumer">
+                <div class="icon_personal">
+                    <i class="material-icons" id="onshow">account_circle</i>
+                </div>
+                <div class="icon_card_store">
+                    <a href="">
+                        <i class="material-icons">add_shopping_cart</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="addProduct">
+            <button type="button" id="addItem" onclick="onAddItem()">Add +</button>
+        </div>
+        <div id="dialog" style="display: none;">
+            <form action="">
+                <div class="infoData">
+                    <div class="dataControl">
+                        <label for="name">Product Name</label>
+                        <input id="name" type="text">
+                    </div>
+                    <div class="dataControl">
+                        <label for="">Brand</label>
+                        <select id="shoesBrand" name="shoesBrand">
+                            <option value="Addidas">Addidas</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Wann">Wan</option>
+                        </select>
+                    </div>
+                    <div class="dataControl">
+                        <label for="">Discription</label>
+                        <input id="discription" type="text">
+                    </div>
+                    <div class="dataControl">
+                        <label for="">Price</label>
+                        <input id="price" type="number">
+                    </div>
+                </div>
+                <div class="imageData">
+                    <div class="dataControl">
+                        <label for="forimage">Input URL image</label>
+                        <input id="url" type="url">
+                    </div>
+                    <div class="dataControl">
+                        <label for="Size">Size</label>
+                        <select name="shoeSize" id="shoeSize">
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                        </select>
+                    </div>
+                    <div class="dialogBtn">
+                        <div class="add">
+                            <button type="button" id="add" onclick="createProduct()">Add Product</button>
+                        </div>
+                        <div class="add">
+                            <button type="button" id="cencal" onclick="onCencal()">Cencal</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="container">
+            <div id="cardContainer"></div>
+        </div>
+    </main>
+</body>
+</html>

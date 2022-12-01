@@ -29,7 +29,10 @@ header{
     width: 550px;
     border: none;
     outline: none;
-    border-radius: 20px;
+}
+.search_bar button {
+    width: 60px;
+    height:40px;
 }
 .icon_constumer{
     margin-top: 5px;
@@ -39,11 +42,13 @@ header{
 .icon_personal i{
     font-size: 30px;
     color: white;
+    cursor: pointer;
 }
 .icon_constumer i{
     margin-top: 10px;
     font-size: 30px;
     color: white;
+    cursor: pointer;
 }
 .navbar_menu ul{
     display: flex;
@@ -68,28 +73,35 @@ main{
     flex-direction: column;
     margin-top: 20px;
 }
-main .shoes{
+main .container{
     padding: 10px;
     gap: 50px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* display: flex; */
 }
-main .card{
+main .container .card{
     border-radius: 20px;
     padding: 20px;
     width: 200px;
     background-color: #1F2833;
-    height: 260px;
+    height: 300px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
 }
-.card img {
-    width: 150px;
-    height: 200px;
+.image img {
+    width: 140px;
+    height: 170px;
+    margin-bottom: 10px;
 }
 .text_button{
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
+}
+.text_button img{
+    width: 60%;
+    height: 30%;
 }
 .text_button button {
     width: 70px;
@@ -98,9 +110,11 @@ main .card{
     border: none;
     background-color: aquamarine;
 }
+.text_button span {
+    color: white;
+}
 .text_button p {
     color: white;
-    padding: 5px;
 }
 footer{
     display: flex;
@@ -119,3 +133,6 @@ footer{
     width: 30px;
     height: 30px;
 }
+
+
+

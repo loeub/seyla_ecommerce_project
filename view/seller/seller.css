@@ -1,0 +1,95 @@
+.addProduct button{
+    width: 80px;
+    padding: 5px;
+    margin-left: 10px;
+    background-color: aquamarine;
+    border: none;
+}
+.dialogBtn{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.add button{
+    width: 90px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: aquamarine;
+    border: none;
+}
+button:hover{
+    border: solid 1px black ;
+    background-color: wheat;
+}
+#dialog{
+    width: 40%;
+    height: 70%;
+    display: flex;
+    margin-left: 28%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    position: fixed;
+}
+form{
+    padding: 10px;
+}
+.infoData{
+    display: flex;
+    flex-direction: column;
+}
+.dataControl{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.dataControl input{
+    padding: 5px;
+    outline: none;
+}
+.dataControl select{
+    padding: 5px;
+}
+.imageData{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* //----- add item -------/// */
+
+#cardContainer {
+    padding: 2rem;
+    width: 90%;
+}
+  
+#edit-buttons {
+    display: flex;
+    justify-content: flex-end;
+} 
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    background-color:white;
+    border-radius: 15px;
+}
+.cardInfo {
+    width: 60%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+}
+.actions {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    cursor: pointer;
+}
+.actions img {
+    width: 35%;
+}
