@@ -88,7 +88,7 @@ function renderDataItem(){
     
         let editAction = document.createElement("img");
         editAction.src = "../../image/edit.svg"
-        editAction.addEventListener("click", updateData);
+        editAction.addEventListener("click", editeData);
         actions.appendChild(editAction);
     
         let trashAction = document.createElement("img");
@@ -101,52 +101,31 @@ function renderDataItem(){
 function onCencal() {
     hideDialog(dialog);
 }
-function onAddItem() {
+function onAddProduct() {
     showDialog(dialog)
     document.querySelector("#add").textContent = "Add Product";
 }
 
 
-function editData(event) {
-    showDialog(dialog);
-    // TODO   update the dialog with question informatin
-    document.querySelector("#file").value = data[index].image;
-    document.querySelector("#price").value = domData[index].price;
-    document.querySelector("#shoeSize").value = domData[index].size;
-
-
-    domData[index].image= document.querySelector("#file").value;
-    domData[index].price = document.querySelector("#price").value;
-    domData[index].size = document.querySelector("#shoeSize").value;
-    // TODO   Show the dialog
-    domData.splice(index,1);
-}
-
-
-function updateData(event){
-    document.querySelector("#add").textContent = "Update";
+function editeData(event){
     let index = event.target.parentElement.parentElement.dataset.index;
-    showDialog(dialog);
-    
-    
+    getIndex = index;
     document.querySelector("#file").value = getImage.value;
     document.querySelector("#price").value = domData[index].price;
     document.querySelector("#shoeSize").value = domData[index].size;
     domData.splice(index, 1);
+    showDialog(dialog);
+    document.querySelector("#add").textContent = "Edite";
 }
 
 
 function removeQuestion(event) {
-    //  Get index
     let index = event.target.parentElement.parentElement.dataset.index;
-  
-    // Remove question
+
     domData.splice(index, 1);
   
-    // Save to local storage
     saveData();
   
-    // Update the view
     renderDataItem();
 }
 
@@ -154,7 +133,7 @@ function removeQuestion(event) {
 
 
 function createProduct(event) {
-    // 1- Create new question
+    // 1- Create new product
     let newDataProduct = {};
     newDataProduct.image = imageURL;
     newDataProduct.brand = document.getElementById("shoesBrand").value;
@@ -163,21 +142,17 @@ function createProduct(event) {
     domData.push(newDataProduct);
     hideDialog(dialog);
   
-    // 2- Save question
+    // 2- Save product
     saveData();
     
-    // 3 - Update the view
+    // 3 - Update the product
     renderDataItem();
 }
 
-// saveData();
 getData();
 renderDataItem();
 
 
-domAddBtn.addEventListener("click", onAddItem);
-domCancelBtn.addEventListener("click", onCencal);
-domBtnCreateItem.addEventListener('click', createProduct)
 
 
 
@@ -195,3 +170,7 @@ function uploadImage(element) {
 getImage.addEventListener('change', function(event) {
     uploadImage(this);
 });
+
+domAddBtn.addEventListener("click", onAddProduct);
+domCancelBtn.addEventListener("click", onCencal);
+domBtnCreateItem.addEventListener('click', createProduct)

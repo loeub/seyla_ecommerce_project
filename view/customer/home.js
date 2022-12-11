@@ -58,3 +58,25 @@ renderDomData();
 
 
 // searcher product
+function searchProduct () {
+    // 1- Get the search text
+
+    let filter = document.querySelector("#search_bar").value.toLocaleUpperCase();
+
+    let item = document.querySelectorAll('.card');
+
+    let title = document.querySelector(".title");
+    
+    for (let i = 0; i <title.length; i++){
+        let a = item[i].querySelector(".title")[0];
+
+        let value = a.innerHTML ||a.innerText || a.textContent; 
+
+        if (value.toLocaleUpperCase().indexOf(filter) > -1){
+            item[i].style.display = "";
+        }
+        else{
+            item[i].style.display  = "none";
+        }
+    }
+}
